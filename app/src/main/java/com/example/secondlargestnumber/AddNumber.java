@@ -1,13 +1,13 @@
 package com.example.secondlargestnumber;
 
 public class AddNumber {
-    private int number;
+    private long number;
 
-    public AddNumber(int number) {
+    public AddNumber(long number) {
         this.number = number;
     }
 
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
 

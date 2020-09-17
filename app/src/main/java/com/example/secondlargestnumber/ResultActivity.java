@@ -27,9 +27,13 @@ public class ResultActivity extends AppCompatActivity {
         });
 
         String result = resultBinding.text.getText().toString() + MainViewModel.secondLargestNumber();
-        if (MainViewModel.secondLargestNumber() == -202) {
+        if (MainViewModel.secondLargestNumber() == 123123123123123L) {
             resultBinding.text.setText("No Numbers");
-        } else {
+        }
+        else if(MainViewModel.secondLargestNumber() == 1234567890123L){
+            resultBinding.text.setText("There is no Second Largest number");
+        }
+        else {
             resultBinding.text.setText(result);
         }
         resultBinding.text.setBackgroundResource(R.drawable.button_style);

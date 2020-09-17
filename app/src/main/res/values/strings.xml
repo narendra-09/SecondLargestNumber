@@ -11,4 +11,5 @@
     <string name="entered_numbers">Entered Numbers :</string>
     <string name="data_show">Add some Numbers</string>
     <string name="my_id">my_id</string>
+    <string name="delete">delete</string>
 </resources>

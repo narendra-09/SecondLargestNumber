@@ -9,14 +9,17 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.widget.Toast;
 
 import com.example.secondlargestnumber.databinding.ActivityMainBinding;
+
 
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
     private MainViewModel mainViewModel;
     private MyAdapter myAdapter;
+    private final int numberLength=10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +58,20 @@ public class MainActivity extends AppCompatActivity {
         //Add Click
         mainBinding.addNumber.setOnClickListener(view -> {
             String number = mainBinding.numberField.getText().toString();
-            int mNumber = Integer.parseInt(number.trim());
-            mainViewModel.addTheNumber(mNumber);
+            if(number.length()>numberLength){
+                Toast.makeText(this, "Maximum Length of Number Exceeds", Toast.LENGTH_SHORT).show();
+            }
 
-            //Clear text
-            mainBinding.numberField.setText("");
+            //int mNumber = Integer.parseInt(number.trim());
+            else {
+                long mNumber = Long.parseLong(number.trim());
+                mainViewModel.addTheNumber(mNumber);
+                //Clear text
+                mainBinding.numberField.setText("");
+            }
         });
         //Clear Click
-        mainBinding.clear.setOnClickListener(view -> mainViewModel.clearTheLast());
+        //mainBinding.clear.setOnClickListener(view -> mainViewModel.clearTheLast());
         //Result Click
         mainBinding.result.setOnClickListener(view -> startActivity(new Intent(this, ResultActivity.class)));
         //Get Data
@@ -70,7 +79,10 @@ public class MainActivity extends AppCompatActivity {
             myAdapter = new MyAdapter(this, addNumbers);
             mainBinding.recyclerOne.setLayoutManager(new GridLayoutManager(this, 5));
             mainBinding.recyclerOne.setAdapter(myAdapter);
+            myAdapter.setOnItemClick(position -> {
+                mainViewModel.clearThePosition(position);
+                myAdapter.notifyItemRemoved(position);
+            });
         });
-
     }
 }

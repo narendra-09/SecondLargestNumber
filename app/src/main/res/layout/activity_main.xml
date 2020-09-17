@@ -39,7 +39,7 @@
         android:layout_toStartOf="@id/add_number"
         android:hint="@string/enter_a_number"
         android:importantForAutofill="no"
-        android:inputType="number" />
+        android:inputType="numberSigned" />
 
     <ImageView
         android:id="@+id/add_number"
@@ -49,31 +49,19 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="5dp"
-        android:layout_toStartOf="@id/clear"
+        android:layout_toStartOf="@id/result"
         android:contentDescription="@string/add"
         android:src="@drawable/add" />
 
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="7dp"
-        android:background="@drawable/button_style"
-        android:text="@string/clear"
-        android:textColor="#FFF"
-        android:textSize="12sp" />
 
     <Button
         android:id="@+id/result"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_above="@id/clear"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="7dp"
         android:background="@drawable/button_style"
         android:text="@string/result"
         android:textColor="#FFF"
